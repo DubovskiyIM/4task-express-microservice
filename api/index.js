@@ -29,7 +29,11 @@ module.exports = express => {
         sum: +n1 + +n2,
         mpy: +n1 * +n2
       };
-      res.set({ ...headers, 'Content-Type': 'application/json' }).json({ result });
+      if (req.headers['content-type']) {
+        res.set({ ...headers, 'Content-Type': 'application/json' }).json({ result });
+      } else {
+        res.send(`Sum: ${result.sum}; Mpy: ${result.mpy}`);
+      }
     });
 
   return router;
