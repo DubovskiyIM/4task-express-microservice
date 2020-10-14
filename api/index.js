@@ -7,7 +7,7 @@ module.exports = express => {
       const { n1, n2 } = req.params;
       const result = +n1 + +n2;
       const headers = {
-        'Access-Allow-Control-Origin': 'http://kodaktor.ru'
+        'Access-Allow-Control-Origin': 'https://kodaktor.ru'
       };
       if (req.headers['content-type'] === 'application/json') {
         res.set({
@@ -23,7 +23,7 @@ module.exports = express => {
       const { n1, n2 } = req.params;
       const result = +n1 * +n2;
       const headers = {
-        'Access-Allow-Control-Origin': 'http://kodaktor.ru'
+        'Access-Allow-Control-Origin': 'https://kodaktor.ru'
       };
       if (req.headers['content-type'] === 'application/json') {
         res.set({
