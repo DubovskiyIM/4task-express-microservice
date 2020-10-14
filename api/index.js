@@ -1,25 +1,16 @@
 module.exports = express => {
   const router = express.Router();
 
+  const headers = {
+    'Access-Control-Allow-Origin': 'https://kodaktor.ru'
+  };
+
   router
     .route('/add/:n1/:n2')
     .get((req, res) => {
       const { n1, n2 } = req.params;
       const result = +n1 + +n2;
-      const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET'
-      };
-      res.set(headers);
-      if (req.headers['content-type'] === 'application/json') {
-        res.set({
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET',
-          'Content-Type': 'application/json'
-        }).send({ result });
-      } else res.send(`${result}`);
+      res.set(headers).send(`${result}`);
     });
 
   router
@@ -27,20 +18,18 @@ module.exports = express => {
     .get((req, res) => {
       const { n1, n2 } = req.params;
       const result = +n1 * +n2;
-      const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET'
+      res.set(headers).send(`${result}`);
+    });
+
+  router
+    .route('/json/:n1/:n2')
+    .post((req, res) => {
+      const { n1, n2 } = req.params;
+      const result = {
+        sum: +n1 + +n2,
+        mpy: +n1 * +n2
       };
-      res.set(headers);
-      if (req.headers['content-type'] === 'application/json') {
-        res.set({
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET',
-          'Content-Type': 'application/json'
-        }).send({ result });
-      } else res.send(`${result}`);
+      res.set({ ...headers, 'Content-Type': 'application/json' }).json({ result });
     });
 
   return router;
