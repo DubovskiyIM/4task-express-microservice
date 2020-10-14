@@ -27,7 +27,7 @@ module.exports = express => {
       };
       if (req.headers['content-type'] === 'application/json') {
         res.set({
-          ...headers,
+          'Access-Control-Allow-Origin': 'https://kodaktor.ru',
           'Content-Type': 'application/json'
         }).send({ result });
       } else res.set(headers).send(`${result}`);
