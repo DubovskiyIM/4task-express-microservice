@@ -7,14 +7,14 @@ module.exports = express => {
       const { n1, n2 } = req.params;
       const result = +n1 + +n2;
       const headers = {
-        'Access-Control-Allow-Origin': 'https://kodaktor.ru'
+        'Access-Control-Allow-Origin': '*'
       };
+      res.set(headers);
       if (req.headers['content-type'] === 'application/json') {
         res.set({
-          'Access-Control-Allow-Origin': 'https://kodaktor.ru',
           'Content-Type': 'application/json'
         }).send({ result });
-      } else res.set(headers).send(`${result}`);
+      } else res.send(`${result}`);
     });
 
   router
@@ -23,14 +23,14 @@ module.exports = express => {
       const { n1, n2 } = req.params;
       const result = +n1 * +n2;
       const headers = {
-        'Access-Control-Allow-Origin': 'https://kodaktor.ru'
+        'Access-Control-Allow-Origin': '*'
       };
+      res.set(headers);
       if (req.headers['content-type'] === 'application/json') {
         res.set({
-          'Access-Control-Allow-Origin': 'https://kodaktor.ru',
           'Content-Type': 'application/json'
         }).send({ result });
-      } else res.set(headers).send(`${result}`);
+      } else res.send(`${result}`);
     });
 
   return router;
