@@ -14,6 +14,9 @@ module.exports = express => {
       res.set(headers);
       if (req.headers['content-type'] === 'application/json') {
         res.set({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET',
           'Content-Type': 'application/json'
         }).send({ result });
       } else res.send(`${result}`);
@@ -32,6 +35,9 @@ module.exports = express => {
       res.set(headers);
       if (req.headers['content-type'] === 'application/json') {
         res.set({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET',
           'Content-Type': 'application/json'
         }).send({ result });
       } else res.send(`${result}`);
