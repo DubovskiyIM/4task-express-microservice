@@ -7,7 +7,8 @@ module.exports = express => {
       const { n1, n2 } = req.params;
       const result = +n1 + +n2;
       const headers = {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*'
       };
       res.set(headers);
       if (req.headers['content-type'] === 'application/json') {
@@ -23,7 +24,8 @@ module.exports = express => {
       const { n1, n2 } = req.params;
       const result = +n1 * +n2;
       const headers = {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*'
       };
       res.set(headers);
       if (req.headers['content-type'] === 'application/json') {
